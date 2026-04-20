@@ -151,6 +151,39 @@
   font-weight: 500;
 }
 
+.heroMenuButton {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0;
+  cursor: pointer;
+}
+
+.heroMenuButtonLine {
+  position: absolute;
+  width: 16px;
+  height: 1.5px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.heroMenuButtonLine:nth-child(1) {
+  transform: translateY(-5px);
+}
+
+.heroMenuButtonLine:nth-child(3) {
+  transform: translateY(5px);
+}
+
+.mobileMenuPanel {
+  display: none;
+}
+
 .heroContent {
   position: relative;
   z-index: 1;
@@ -308,6 +341,10 @@
   gap: 20px;
   align-items: center;
   min-height: 720px;
+}
+
+.splitSectionReversed {
+  align-items: stretch;
 }
 
 .splitContent {
@@ -963,38 +1000,87 @@
 @media (max-width: 760px) {
   .heroNav {
     position: absolute;
-    top: 16px;
-    width: calc(100% - 24px);
-    padding: 12px 14px;
-    flex-wrap: wrap;
+    top: 20px;
+    width: calc(100% - 22px);
+    padding: 10px 16px;
     gap: 12px;
-    justify-content: center;
+    justify-content: space-between;
   }
 
   .heroMorphLayer {
-    min-height: 720px;
+    min-height: 645px;
   }
 
   .heroBrand {
-    font-size: 17px;
+    gap: 10px;
+    font-size: 18px;
+    max-width: calc(100% - 56px);
   }
 
   .heroMenu {
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 6px;
+    display: none;
   }
 
-  .heroMenu a {
-    padding: 6px 10px;
-    font-size: 12.5px;
+  .heroBook {
+    display: none;
+  }
+
+  .heroMenuButton {
+    position: relative;
+    display: inline-flex;
+    flex-shrink: 0;
+  }
+
+  .mobileMenuPanel {
+    position: absolute;
+    top: 78px;
+    left: 50%;
+    z-index: 3;
+    display: flex;
+    width: calc(100% - 22px);
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    background: rgba(20, 17, 16, 0.82);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 20px 48px rgba(12, 10, 9, 0.24);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(-6px);
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+
+  .mobileMenuPanelOpen {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .mobileMenuPanel a {
+    display: flex;
+    min-height: 46px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 14px;
+    border-radius: 18px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .mobileMenuPanel a:last-child {
+    margin-top: 6px;
+    justify-content: center;
+    background: #fff;
+    color: var(--text);
   }
 
   .heroContent {
     width: 100%;
     gap: 18px;
-    padding: 240px 20px 64px;
+    padding: 390px 24px 80px;
   }
 
   .heroHeading,
@@ -1006,12 +1092,24 @@
     line-height: 40px;
   }
 
+  .heroHeading {
+    width: 330px;
+    max-width: 100%;
+  }
+
   .heroCopy,
   .sectionCopy,
   .servicePathsCopy,
   .closing .sectionCopy {
     font-size: 15px;
     line-height: 25px;
+  }
+
+  .heroCopy {
+    width: 331px;
+    max-width: 100%;
+    font-size: 14px;
+    line-height: 18px;
   }
 
   .heroBadge {
@@ -1023,17 +1121,19 @@
   }
 
   .heroActions {
-    flex-wrap: wrap;
-    gap: 12px;
+    gap: 20px;
+    align-items: center;
   }
 
   .heroActions .primaryButton,
   .heroActions .secondaryButton {
-    min-height: 48px;
+    min-height: auto;
   }
 
   .heroActions .primaryButton {
-    width: 100%;
+    min-height: 49px;
+    padding: 0 27px;
+    font-size: 13.5px;
   }
 
   .container,
@@ -1049,6 +1149,14 @@
     min-height: auto;
   }
 
+  .splitSectionReversed .splitImageWrap {
+    order: 2;
+  }
+
+  .splitSectionReversed .splitContent {
+    order: 1;
+  }
+
   .splitContent,
   .splitImageWrap,
   .statement,
@@ -1060,22 +1168,24 @@
   }
 
   .splitContent {
-    padding-top: 40px;
-    padding-bottom: 12px;
+    justify-content: center;
+    min-height: 301px;
+    padding-top: 80px;
+    padding-bottom: 24px;
   }
 
   .splitImageWrap {
     padding-top: 0;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
   }
 
   .splitImage {
-    height: 360px;
+    height: 328px;
   }
 
   .bannerSection,
   .bannerOverlay {
-    min-height: 660px;
+    min-height: 609px;
   }
 
   .bannerContent,
@@ -1084,12 +1194,16 @@
   }
 
   .bannerContent {
-    padding: 0 8px;
+    width: 393px;
+    max-width: 100%;
+    padding: 0 23px;
   }
 
   .featureHeading {
-    padding-top: 44px;
-    padding-bottom: 64px;
+    width: 349px;
+    max-width: calc(100% - 32px);
+    padding-top: 100px;
+    padding-bottom: 32px;
   }
 
   .testimonial {
@@ -1114,23 +1228,37 @@
   }
 
   .pillCloud {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    width: 393px;
+    max-width: 100%;
+    margin-top: 0;
+    padding: 0 8px;
   }
 
   .pill {
-    width: 100%;
+    width: auto;
+    padding: 14px 20px 15px;
+    gap: 6px;
+  }
+
+  .pillMeta {
+    font-size: 11px;
   }
 
   .stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px 14px;
+    gap: 24px;
+    width: 347px;
+    max-width: 100%;
+    margin-top: 0;
+    padding-top: 21px;
   }
 
   .processCopy {
-    padding-top: 64px;
-    padding-bottom: 48px;
+    padding: 72px 24px 40px;
   }
 
   .processSteps {
@@ -1146,21 +1274,36 @@
   }
 
   .pricingContent {
-    padding: 116px 20px 44px;
-    gap: 20px;
+    width: 100%;
+    padding: 24px;
+    gap: 16px;
+    align-content: center;
+    min-height: 367px;
   }
 
   .pricingContent .sectionCopy {
     padding-top: 0;
+    font-size: 14px;
+    line-height: 20px;
   }
 
   .galleryTrack {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
+    display: flex;
+    gap: 16px;
+    width: max-content;
+    margin-top: 36px;
+    padding: 0 24px;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
   }
 
   .galleryCard {
-    height: 220px;
+    width: 134px;
+    min-width: 134px;
+    height: 167px;
+    border-radius: 16px;
+    scroll-snap-align: center;
   }
 
   .footer {
@@ -1172,30 +1315,24 @@
 
 @media (max-width: 560px) {
   .heroMorphLayer {
-    min-height: 680px;
+    min-height: 645px;
   }
 
   .heroNav {
-    top: 12px;
-    width: calc(100% - 20px);
-    padding: 12px;
-    gap: 10px;
+    top: 20px;
+    width: calc(100% - 22px);
+    padding: 9px 18px;
+    gap: 12px;
   }
 
   .heroBrand {
-    width: 100%;
-    justify-content: center;
-    gap: 10px;
-    font-size: 16px;
-  }
-
-  .heroBook {
-    width: 100%;
-    min-height: 44px;
+    justify-content: flex-start;
+    width: auto;
+    font-size: 20px;
   }
 
   .heroContent {
-    padding: 230px 16px 52px;
+    padding: 390px 24px 80px;
   }
 
   .heroHeading,
@@ -1205,8 +1342,8 @@
   .bannerContent .sectionTitle,
   .servicePathsTitle,
   .sectionTitle {
-    font-size: 30px;
-    line-height: 34px;
+    font-size: 32px;
+    line-height: 40px;
   }
 
   .heroCopy,
@@ -1218,11 +1355,12 @@
   }
 
   .collageCanvas {
-    padding: 28px 16px 0;
+    padding: 0;
   }
 
   .collageStage {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
   }
 
   .collageLabelText {
@@ -1240,22 +1378,23 @@
   }
 
   .splitImage {
-    height: 300px;
+    height: 328px;
     border-radius: 16px;
   }
 
   .bannerSection,
   .bannerOverlay {
-    min-height: 580px;
+    min-height: 609px;
   }
 
   .bannerContent .sectionTitle {
-    line-height: 34px;
+    font-size: 48px;
+    line-height: 54px;
   }
 
   .statValue {
-    font-size: 36px;
-    line-height: 44px;
+    font-size: 40px;
+    line-height: 52px;
   }
 
   .statLabel {
@@ -1265,18 +1404,18 @@
 
   .testimonial {
     width: calc(100% - 8px);
-    min-height: 440px;
+    min-height: 463px;
     border-radius: 14px;
   }
 
   .testimonialOverlay {
-    min-height: 440px;
-    padding: 20px 16px;
+    min-height: 463px;
+    padding: 24px 20px;
   }
 
   .quoteText {
-    font-size: 19px;
-    line-height: 28px;
+    font-size: 22px;
+    line-height: 29px;
   }
 
   .testimonialMeta {
@@ -1293,13 +1432,12 @@
   }
 
   .processCopy {
-    padding-top: 52px;
+    padding-top: 56px;
     padding-bottom: 40px;
   }
 
   .processSteps,
-  .stats,
-  .galleryTrack {
+  .stats {
     grid-template-columns: 1fr;
   }
 
@@ -1316,13 +1454,14 @@
   }
 
   .servicePaths {
-    width: calc(100% - 20px);
-    padding-top: 72px;
-    padding-bottom: 64px;
+    width: 100%;
+    padding-top: 100px;
+    padding-bottom: 38px;
   }
 
   .servicePrompt {
-    max-width: none;
+    width: 349px;
+    max-width: calc(100% - 44px);
   }
 
   .searchInput {
@@ -1339,38 +1478,65 @@
   }
 
   .pricingBand {
-    min-height: 420px;
+    min-height: 367px;
   }
 
   .pricingContent {
-    width: calc(100% - 20px);
-    padding: 96px 16px 36px;
+    width: 100%;
+    padding: 24px;
   }
 
   .gallerySection {
-    padding-top: 56px;
+    height: 463px;
+    overflow: hidden;
+    padding-top: 70px;
   }
 
-  .galleryTrack {
-    width: calc(100% - 20px);
-    margin-top: 32px;
+  .galleryHeader .sectionTitle {
+    width: 357px;
+    max-width: calc(100% - 36px);
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 32px;
+    line-height: 40px;
   }
 
-  .galleryCard {
-    height: 240px;
-    border-radius: 14px;
+  .galleryHeader .sectionCopy {
+    width: 347px;
+    max-width: calc(100% - 46px);
+    font-size: 14px;
+    line-height: 20px;
   }
 
   .closing {
-    width: calc(100% - 20px);
-    padding-top: 88px;
-    padding-bottom: 104px;
+    width: 100%;
+    padding: 24px 24px 32px;
+    gap: 16px;
   }
 
   .footerLinks {
     gap: 18px;
     flex-wrap: wrap;
     justify-content: center;
+  }
+
+  .footer {
+    width: 393px;
+    max-width: 100%;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 25px 24px 24px;
+    gap: 24px;
+    text-align: left;
+  }
+
+  .footerBrand {
+    font-size: 24px;
+  }
+
+  .footerCopy {
+    margin-top: 12px;
   }
 }
 

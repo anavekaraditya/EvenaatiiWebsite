@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import styles from "./landing-home.module.css";
 
 const centerFrameStyle = {
@@ -110,6 +110,13 @@ export function LandingHome() {
   const sceneRef = useRef<HTMLElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
   const targetCardRef = useRef<HTMLDivElement>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const closeMenu = () => setMobileMenuOpen(false);
+    window.addEventListener("resize", closeMenu);
+    return () => window.removeEventListener("resize", closeMenu);
+  }, []);
 
   useEffect(() => {
     const scene = sceneRef.current;
@@ -244,6 +251,38 @@ export function LandingHome() {
               <Link href="/book" className={styles.heroBook}>
                 Book consultation
               </Link>
+              <button
+                type="button"
+                className={styles.heroMenuButton}
+                aria-expanded={mobileMenuOpen}
+                aria-controls="landing-mobile-menu"
+                onClick={() => setMobileMenuOpen((open) => !open)}
+              >
+                <span className={styles.heroMenuButtonLine} />
+                <span className={styles.heroMenuButtonLine} />
+                <span className={styles.heroMenuButtonLine} />
+              </button>
+            </div>
+
+            <div
+              id="landing-mobile-menu"
+              className={`${styles.mobileMenuPanel} ${mobileMenuOpen ? styles.mobileMenuPanelOpen : ""}`}
+            >
+              <Link href="/#story" onClick={() => setMobileMenuOpen(false)}>
+                Story
+              </Link>
+              <Link href="#services" onClick={() => setMobileMenuOpen(false)}>
+                Services
+              </Link>
+              <Link href="#portfolio" onClick={() => setMobileMenuOpen(false)}>
+                Portfolio
+              </Link>
+              <Link href="#process" onClick={() => setMobileMenuOpen(false)}>
+                Process
+              </Link>
+              <Link href="/book" onClick={() => setMobileMenuOpen(false)}>
+                Book consultation
+              </Link>
             </div>
 
             <div className={styles.heroContent}>
@@ -292,7 +331,7 @@ export function LandingHome() {
         </div>
       </section>
 
-      <section className={styles.splitSection}>
+      <section className={`${styles.splitSection} ${styles.splitSectionReversed}`}>
         <div className={styles.splitImageWrap}>
           <div className={styles.splitImage}>
             <img src="/figma-home/planning.png" alt="Wedding decor and styling" />
