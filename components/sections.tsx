@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { CaseStudy, PricingTier, ProcessStep, ServiceLink } from "@/data/site";
+import { siteConfig, type CaseStudy, type PricingTier, type ProcessStep, type ServiceLink } from "@/data/site";
 
 export function SectionIntro({
   eyebrow,
@@ -61,9 +61,9 @@ export function CaseStudyGrid({ items }: { items: CaseStudy[] }) {
                 <span key={detail}>{detail}</span>
               ))}
             </div>
-            <Link className="button-secondary" href="/book">
+            <a className="button-secondary" href={siteConfig.callHref}>
               {item.cta}
-            </Link>
+            </a>
           </div>
         </article>
       ))}
@@ -88,9 +88,9 @@ export function PricingGrid({ items }: { items: PricingTier[] }) {
               <li key={inclusion}>{inclusion}</li>
             ))}
           </ul>
-          <Link className="button" href="/book">
+          <a className="button" href={siteConfig.callHref}>
             {item.cta}
-          </Link>
+          </a>
         </article>
       ))}
     </div>

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { ConsultationTrigger } from "@/components/consultation-trigger";
 import { siteConfig } from "@/data/site";
 
 export function SiteHeader() {
@@ -56,9 +57,9 @@ export function SiteHeader() {
             <Link className="header-cta-secondary" href={`https://wa.me/${siteConfig.whatsappNumber}`}>
               WhatsApp
             </Link>
-            <Link className="header-cta-primary" href="/book">
+            <ConsultationTrigger className="header-cta-primary">
               Book Consultation
-            </Link>
+            </ConsultationTrigger>
           </div>
         </div>
       </div>

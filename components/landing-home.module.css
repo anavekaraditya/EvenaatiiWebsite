@@ -871,10 +871,18 @@
   display: flex;
   width: min(1200px, calc(100% - 40px));
   margin: 0 auto;
-  padding: 29px 56px 28px;
-  align-items: center;
+  padding: 36px 56px 28px;
+  align-items: flex-start;
   justify-content: space-between;
+  gap: 28px;
   border-top: 1px solid var(--line);
+}
+
+.footerBrandBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 200px;
 }
 
 .footerBrand {
@@ -884,6 +892,80 @@
   font-family: var(--font-serif);
   font-size: 24px;
   color: var(--brand);
+}
+
+.footerSocials {
+  display: flex;
+  gap: 10px;
+}
+
+.footerSocials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--brand);
+  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+.footerSocials a:hover {
+  transform: translateY(-1px);
+  background: rgba(107, 47, 108, 0.06);
+  border-color: rgba(107, 47, 108, 0.22);
+}
+
+.footerSocials svg {
+  width: 18px;
+  height: 18px;
+}
+
+.footerContactGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  flex: 1;
+}
+
+.footerContactItem {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.footerLabel {
+  color: var(--brand);
+  font-size: 12px;
+  line-height: 19.2px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.footerValue,
+.footerAddress {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  line-height: 1.55;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.footerValue {
+  text-decoration: none;
+}
+
+.footerAddress {
+  max-width: 420px;
+}
+
+.footerMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+  min-width: 120px;
 }
 
 .footerLinks {
@@ -987,6 +1069,21 @@
     padding-right: 24px;
   }
 
+  .footer {
+    flex-direction: column;
+  }
+
+  .footerContactGrid {
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .footerMeta {
+    width: 100%;
+    align-items: flex-start;
+  }
+
   .processImage {
     min-height: 520px;
   }
@@ -1058,24 +1155,29 @@
     transform: translateX(-50%) translateY(0);
   }
 
-  .mobileMenuPanel a {
-    display: flex;
-    min-height: 46px;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 14px;
-    border-radius: 18px;
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 14px;
-    font-weight: 500;
-  }
+.mobileMenuPanel a,
+.mobileMenuPanel button {
+  display: flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  border-radius: 18px;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+}
 
-  .mobileMenuPanel a:last-child {
-    margin-top: 6px;
-    justify-content: center;
-    background: #fff;
-    color: var(--text);
-  }
+.mobileMenuPanel :is(a, button):last-child {
+  margin-top: 6px;
+  justify-content: center;
+  background: #fff;
+  color: var(--text);
+}
 
   .heroContent {
     width: 100%;
@@ -1307,9 +1409,8 @@
   }
 
   .footer {
-    flex-direction: column;
-    gap: 12px;
-    text-align: center;
+    gap: 18px;
+    text-align: left;
   }
 }
 
@@ -1359,12 +1460,105 @@
   }
 
   .collageStage {
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 837px;
+    max-width: none;
+    top: auto;
+    transform: none;
+  }
+
+  .collageCard,
+  .collageLabel {
+    position: absolute;
+    width: auto !important;
+    height: auto !important;
+    aspect-ratio: auto;
+    transform: none;
+  }
+
+  .collageCard:nth-child(1) {
+    left: 39px !important;
+    top: -67px !important;
+    width: 203px !important;
+    height: 110px !important;
+  }
+
+  .collageCard:nth-child(2) {
+    left: -44px !important;
+    top: 795px !important;
+    width: 184px !important;
+    height: 107px !important;
+  }
+
+  .collageCard:nth-child(3) {
+    right: 49px !important;
+    top: 252px !important;
+    width: 124px !important;
+    height: 117px !important;
+  }
+
+  .collageCard:nth-child(4) {
+    right: -8px !important;
+    top: 438px !important;
+    width: 121px !important;
+    height: 119px !important;
+  }
+
+  .collageCard:nth-child(5) {
+    left: -72px !important;
+    top: 109px !important;
+    width: 144px !important;
+    height: 115px !important;
+  }
+
+  .collageCard:nth-child(6) {
+    left: 160px !important;
+    top: 67px !important;
+    width: 98px !important;
+    height: 83px !important;
+  }
+
+  .collageCard:nth-child(7) {
+    left: 243px !important;
+    top: 634px !important;
+    width: 150px !important;
+    height: 122px !important;
+  }
+
+  .collageCard:nth-child(8) {
+    left: -82px !important;
+    top: 597px !important;
+    width: 130px !important;
+    height: 111px !important;
+  }
+
+  .collageTarget {
+    left: 50% !important;
+    top: 307px !important;
+    width: 314px !important;
+    height: 181px !important;
+    opacity: 1;
+    transform: translateX(-50%) !important;
+  }
+
+  .collageLabel {
+    left: 53px !important;
+    top: 517px !important;
+    gap: 14px;
+    transform: none !important;
+    justify-content: flex-start;
+    padding: 0;
+  }
+
+  .collageLabelMark {
+    width: 21px;
+    height: 50px;
   }
 
   .collageLabelText {
-    font-size: 30px;
+    font-size: 40px;
   }
 
   .splitContent,
@@ -1436,9 +1630,15 @@
     padding-bottom: 40px;
   }
 
-  .processSteps,
-  .stats {
+  .processSteps {
     grid-template-columns: 1fr;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    width: 347px;
+    max-width: 100%;
   }
 
   .processStep {
@@ -1523,11 +1723,11 @@
   .footer {
     width: 393px;
     max-width: 100%;
-    flex-direction: row;
+    flex-direction: column;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: 25px 24px 24px;
-    gap: 24px;
+    gap: 20px;
     text-align: left;
   }
 
@@ -1535,8 +1735,27 @@
     font-size: 24px;
   }
 
+  .footerSocials {
+    gap: 8px;
+  }
+
+  .footerContactGrid {
+    gap: 18px;
+  }
+
+  .footerValue,
+  .footerAddress {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .footerMeta {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
   .footerCopy {
-    margin-top: 12px;
+    margin-top: 0;
   }
 }
 

@@ -31,10 +31,17 @@ export type ProcessStep = {
 
 export const siteConfig = {
   brand: "Evenaatii",
-  location: "Hubli, Karnataka",
-  whatsappNumber: "919000000000",
-  email: "hello@evenaatii.com",
-  phone: "+91 90000 00000",
+  siteUrl: "https://evenaatiiwebsite.vercel.app",
+  location: "2nd Floor, Shree Gurukrupa, above IDBI Bank, Akshay Colony, Hubballi, Karnataka - 580030",
+  whatsappNumber: "919902866656",
+  email: "evenaatiiplanners@gmail.com",
+  phone: "+91 99028 66656",
+  phoneDisplay: "99028 66656",
+  callHref: "tel:+919902866656",
+  mailHref: "mailto:evenaatiiplanners@gmail.com",
+  instagramUrl: "https://www.instagram.com/evenaatii_planners",
+  facebookUrl: "https://www.facebook.com/profile.php?id=100089817563493&mibextid=LQQJ4d",
+  youtubeUrl: "https://www.youtube.com/@EvenaatiiPlanners",
   nav: [
     { label: "Story", href: "/#story" },
     { label: "Services", href: "/#services" },

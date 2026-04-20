@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ConsultationTrigger } from "@/components/consultation-trigger";
 import { siteConfig } from "@/data/site";
 
 export function StickyCTA() {
@@ -16,9 +17,9 @@ export function StickyCTA() {
       <Link className="button-secondary" href={`https://wa.me/${siteConfig.whatsappNumber}`}>
         WhatsApp
       </Link>
-      <Link className="button" href="/book">
+      <ConsultationTrigger className="button">
         Start Booking
-      </Link>
+      </ConsultationTrigger>
     </div>
   );
 }

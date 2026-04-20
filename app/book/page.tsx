@@ -1,6 +1,22 @@
+import type { Metadata } from "next";
 import { LeadForm } from "@/components/lead-form";
 import { CTASection, SectionIntro } from "@/components/sections";
 import { seoPages, seoTopics, siteConfig } from "@/data/site";
+
+export const metadata: Metadata = {
+  title: "Book Event Planner Consultation in Hubballi",
+  description:
+    "Book a consultation with Evenaatii, an event planner and wedding planner in Hubballi, Hubli, Karnataka. Start via WhatsApp, phone, or detailed inquiry.",
+  keywords: [
+    "book event planner Hubballi",
+    "book wedding planner Hubli",
+    "event planner consultation Karnataka",
+    "wedding planning inquiry Hubballi"
+  ],
+  alternates: {
+    canonical: "/book"
+  }
+};
 
 export default function BookPage() {
   return (

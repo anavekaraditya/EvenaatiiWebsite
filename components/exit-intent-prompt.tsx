@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { ConsultationTrigger } from "@/components/consultation-trigger";
 
 export function ExitIntentPrompt() {
   const pathname = usePathname();
@@ -36,9 +37,9 @@ export function ExitIntentPrompt() {
           Share your event type, date, and budget path first. We&apos;ll tell you which funnel or package direction fits best.
         </p>
         <div className="button-row">
-          <Link className="button" href="/book" onClick={() => setVisible(false)}>
+          <ConsultationTrigger className="button" onOpen={() => setVisible(false)}>
             Start Inquiry
-          </Link>
+          </ConsultationTrigger>
           <button className="button-secondary" type="button" onClick={() => setVisible(false)}>
             Continue Browsing
           </button>

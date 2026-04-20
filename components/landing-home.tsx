@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { ConsultationTrigger } from "@/components/consultation-trigger";
+import { siteConfig } from "@/data/site";
 import styles from "./landing-home.module.css";
 
 const centerFrameStyle = {
@@ -248,9 +250,9 @@ export function LandingHome() {
                 <Link href="#portfolio">Portfolio</Link>
                 <Link href="#process">Process</Link>
               </nav>
-              <Link href="/book" className={styles.heroBook}>
+              <ConsultationTrigger className={styles.heroBook}>
                 Book consultation
-              </Link>
+              </ConsultationTrigger>
               <button
                 type="button"
                 className={styles.heroMenuButton}
@@ -280,9 +282,9 @@ export function LandingHome() {
               <Link href="#process" onClick={() => setMobileMenuOpen(false)}>
                 Process
               </Link>
-              <Link href="/book" onClick={() => setMobileMenuOpen(false)}>
+              <ConsultationTrigger onOpen={() => setMobileMenuOpen(false)}>
                 Book consultation
-              </Link>
+              </ConsultationTrigger>
             </div>
 
             <div className={styles.heroContent}>
@@ -297,9 +299,9 @@ export function LandingHome() {
                 farewell.
               </div>
               <div className={styles.heroActions}>
-                <Link href="/book" className={styles.primaryButton}>
+                <ConsultationTrigger className={styles.primaryButton}>
                   Book consultation
-                </Link>
+                </ConsultationTrigger>
                 <Link href="#portfolio" className={styles.secondaryButton}>
                   View portfolio →
                 </Link>
@@ -492,22 +494,90 @@ export function LandingHome() {
           Tell us about the celebration you are imagining and we will guide the next step with
           clarity, taste, and the right level of planning depth.
         </p>
-        <Link href="/book" className={styles.primaryButton}>
+        <ConsultationTrigger className={styles.primaryButton}>
           Book consultation
-        </Link>
+        </ConsultationTrigger>
       </section>
 
       <footer className={styles.footer}>
-        <div className={styles.footerBrand}>
-          <img src="/figma-home/brand-mark.svg" alt="" className={styles.heroBrandMark} />
-          <span>Evenaatii</span>
+        <div className={styles.footerBrandBlock}>
+          <div className={styles.footerBrand}>
+            <img src="/figma-home/brand-mark.svg" alt="" className={styles.heroBrandMark} />
+            <span>Evenaatii</span>
+          </div>
+          <div className={styles.footerSocials}>
+            <a href={siteConfig.instagramUrl} target="_blank" rel="noreferrer" aria-label="Instagram">
+              <InstagramIcon />
+            </a>
+            <a href={siteConfig.facebookUrl} target="_blank" rel="noreferrer" aria-label="Facebook">
+              <FacebookIcon />
+            </a>
+            <a href={siteConfig.youtubeUrl} target="_blank" rel="noreferrer" aria-label="YouTube">
+              <YoutubeIcon />
+            </a>
+          </div>
         </div>
-        <div className={styles.footerLinks}>
-          <span>Terms</span>
-          <span>Privacy</span>
+        <div className={styles.footerContactGrid}>
+          <div className={styles.footerContactItem}>
+            <div className={styles.footerLabel}>Call us at</div>
+            <a href={siteConfig.callHref} className={styles.footerValue}>
+              {siteConfig.phoneDisplay}
+            </a>
+          </div>
+          <div className={styles.footerContactItem}>
+            <div className={styles.footerLabel}>Address</div>
+            <div className={styles.footerAddress}>{siteConfig.location}</div>
+          </div>
+          <div className={styles.footerContactItem}>
+            <div className={styles.footerLabel}>Mail</div>
+            <a href={siteConfig.mailHref} className={styles.footerValue}>
+              {siteConfig.email}
+            </a>
+          </div>
         </div>
-        <div className={styles.footerCopy}>© 2026 Evenaatii</div>
+        <div className={styles.footerMeta}>
+          <div className={styles.footerLinks}>
+            <span>Terms</span>
+            <span>Privacy</span>
+          </div>
+          <div className={styles.footerCopy}>© 2026 Evenaatii</div>
+        </div>
       </footer>
     </div>
+  );
+}
+
+function InstagramIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" strokeWidth="1.7" />
+      <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" strokeWidth="1.7" />
+      <circle cx="17.4" cy="6.8" r="1.2" fill="currentColor" />
+    </svg>
+  );
+}
+
+function FacebookIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M13.3 20.5v-7.1h2.4l.4-2.8h-2.8V8.8c0-.8.2-1.4 1.4-1.4h1.5V4.9c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.9v1.9H8v2.8h2.3v7.1h3Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+function YoutubeIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M20.5 7.2c-.2-.9-.9-1.6-1.8-1.9C17.2 5 12 5 12 5s-5.2 0-6.7.3c-.9.3-1.6 1-1.8 1.9C3.2 8.8 3.2 12 3.2 12s0 3.2.3 4.8c.2.9.9 1.6 1.8 1.9 1.5.3 6.7.3 6.7.3s5.2 0 6.7-.3c.9-.3 1.6-1 1.8-1.9.3-1.6.3-4.8.3-4.8s0-3.2-.3-4.8Z"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+      />
+      <path d="m10.2 15.1 5-3.1-5-3.1v6.2Z" fill="currentColor" />
+    </svg>
   );
 }
