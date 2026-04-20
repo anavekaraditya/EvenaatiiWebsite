@@ -90,7 +90,7 @@ export default function BookPage() {
           <CTASection
             title="Need to see proof before you inquire?"
             copy="The portfolio route keeps narrative context intact while still ending in the same conversion system."
-            primary={{ label: "View Portfolio", href: "/portfolio" }}
+            primary={{ label: "View Portfolio", href: "/#portfolio" }}
             secondary={{ label: "Go Home", href: "/" }}
           />
         </div>

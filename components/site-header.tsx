@@ -38,10 +38,8 @@ export function SiteHeader() {
           </Link>
           <nav className="header-nav" aria-label="Primary">
             {siteConfig.nav.map((item) => {
-              const isActive =
-                item.href === "/#services"
-                  ? pathname === "/" || pathname === "/corporate" || pathname === "/social-events" || pathname === "/design-studio"
-                  : pathname === item.href;
+              const isAnchor = item.href.startsWith("/#");
+              const isActive = isAnchor ? pathname === "/" : pathname === item.href;
 
               return (
                 <Link

@@ -236,9 +236,9 @@ export function LandingHome() {
                 <span className={styles.heroBrandText}>Evenaatii Planners</span>
               </Link>
               <nav className={styles.heroMenu} aria-label="Landing page navigation">
-                <Link href="/weddings">Weddings</Link>
+                <Link href="/#story">Story</Link>
                 <Link href="#services">Services</Link>
-                <Link href="/portfolio">Portfolio</Link>
+                <Link href="#portfolio">Portfolio</Link>
                 <Link href="#process">Process</Link>
               </nav>
               <Link href="/book" className={styles.heroBook}>
@@ -261,8 +261,8 @@ export function LandingHome() {
                 <Link href="/book" className={styles.primaryButton}>
                   Book consultation
                 </Link>
-                <Link href="/weddings" className={styles.secondaryButton}>
-                  View weddings →
+                <Link href="#portfolio" className={styles.secondaryButton}>
+                  View portfolio →
                 </Link>
               </div>
             </div>
@@ -270,7 +270,7 @@ export function LandingHome() {
         </div>
       </section>
 
-      <section className={styles.splitSection}>
+      <section className={styles.splitSection} id="story">
         <div className={styles.splitContent}>
           <div className={styles.eyebrow}>Why Evenaatii</div>
           <h2 className={styles.sectionTitle}>

@@ -26,7 +26,7 @@ export function SiteFooter() {
           <p>{siteConfig.phone}</p>
         </div>
         <div className="inline-actions">
-          <Link href="/portfolio">View Work</Link>
+          <Link href="/#portfolio">View Work</Link>
           <Link href="/book">Book Consultation</Link>
         </div>
       </div>

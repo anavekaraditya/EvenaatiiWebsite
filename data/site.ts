@@ -36,9 +36,9 @@ export const siteConfig = {
   email: "hello@evenaatii.com",
   phone: "+91 90000 00000",
   nav: [
-    { label: "Weddings", href: "/weddings" },
+    { label: "Story", href: "/#story" },
     { label: "Services", href: "/#services" },
-    { label: "Portfolio", href: "/portfolio" },
+    { label: "Portfolio", href: "/#portfolio" },
     { label: "Book", href: "/book" }
   ]
 };
